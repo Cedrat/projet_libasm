@@ -1,17 +1,18 @@
 	global ft_write
-	extern  __errno_location
+	extern  __errno_location ;return a int* who is a pointer to the adress of __errno_location
+							 ;need to puts the err_value at the adress of pointer
 
 	ft_write :
-		mov 	rax, 1
+		mov 	rax, 1				; 1 is syscall write
 		syscall
 		CMP 	rax, 0
-		jl 		return_value
+		jl 		err_value            ; if negative, is a error_code
 		ret
 
-	return_value:
+	err_value:
 		neg 	rax
 		mov 	rdi, rax
 		call 	__errno_location
-		;mov [rax],rdi
-		;mov rax, -1
+		mov [rax],rdi
+		mov rax, -1
 		ret
