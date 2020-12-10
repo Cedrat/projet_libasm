@@ -8,11 +8,20 @@ extern  __errno_location
 		push rbp			;we need to save YOU
 		mov rbp, rdi		;save char* to copy
 		call ft_strlen		;rdi take len
+		inc rax;
 		mov rdi, rax
 		inc rdi
-		call malloc			;malloc use len and return rdi
+		call malloc	wrt ..plt		;malloc use len and return rdi
+		CMP 	rax, 0
+		jl 		err_value            ; if negative, is a error_code
+		mov [rax],rdi
 		mov rdi, rax
 		mov rsi, rbp
-		call ft_strcpy
 		pop rbp
+		call ft_strcpy
+		mov rax, rdi
+		ret
+
+	err_value:
+		xor rax, rax
 		ret
