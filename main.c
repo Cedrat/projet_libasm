@@ -38,8 +38,8 @@ int main()
 	puts("\n_____________with_a_long_string_____________");
 	char dest_str2[10000];
 	char dest_str3[10000];
-	printf("libc = %s\n", strcpy(dest_str, bigstr));
-	printf("\nlibasm.a = %s\n", ft_strcpy(dest_str, bigstr));
+	printf("libc = %s\n", strcpy(dest_str2, bigstr));
+	printf("\nlibasm.a = %s\n", ft_strcpy(dest_str3, bigstr));
 
 	puts("\n\n_____________ft_strcmp.s_____________\n\n");
 	puts("_____________with_two_empty_string_____________");
@@ -56,12 +56,14 @@ int main()
 	printf("libasm.a = %d\n", ft_strcmp	("deflag", "yo"));
 	printf("libc = %d\n", strcmp("yo", "deflag"));
 	printf("libasm.a = %d\n", ft_strcmp	("yo", "deflag"));
+	printf("libc = %d\n", strcmp("\200", "0"));
+	printf("libasm.a = %d\n", ft_strcmp	("\200", "0"));
 
 	errno = 0;
 	puts("\n\n_____________ft_write.s_____________\n\n");
 	puts("_____________in_stdin_____________");
-	printf(" = libc = %ld\n", write(1, "yo", 2));
-	printf(" = libasm.a = %ld\n", ft_write(1, "yo", 2));
+	printf(" = libc = %ld\n", write(42, "bonjour", 7));
+	printf(" = libasm.a = %ld\n", ft_write(42 ,"bonjour", 7));
 	printf(" = libc = %ld\n", write(1, "yo", 1));
 	printf(" = libasm.a = %ld\n", ft_write(1, "yo", 1));
 	printf(" = libc = %ld\n", write(1, "yo", 0));
