@@ -5,24 +5,24 @@
 		xor rax, rax
 
 	loop:
-		mov bl , byte [rdi]
-		mov bh , byte [rsi]
-		cmp [rsi], byte 0
+		mov bl , [rdi]
+		mov r9b , [rsi]
+		cmp bl, byte 0
 		je check
-		cmp [rdi], byte 0
-		je check
-		cmp bh, bl
+		cmp r9b, bl
 		jne check
 		inc rsi
 		inc rdi
 		jmp loop
 
 	check:
-		cmp bh, bl
+		movzx rdx, bl
+		movzx rbx, r9b
+		cmp rbx, rdx
 		jl incre
-		cmp bh, bl
+		cmp rbx, rdx
 		jg decre
-		cmp bh, bl
+		cmp rbx, rdx
 		je end
 
 	incre:
