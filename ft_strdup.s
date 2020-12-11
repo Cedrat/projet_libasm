@@ -8,7 +8,6 @@ extern  __errno_location
 		push rbp			;we need to save YOU
 		mov rbp, rdi		;save char* to copy
 		call ft_strlen		;rdi take len
-		inc rax;
 		mov rdi, rax
 		inc rdi
 		call malloc	wrt ..plt		;malloc use len and return rdi
